@@ -26,14 +26,31 @@ window.onload = () => {
 	//輪唱処理
 	//------------------------------------
 	let aroundSing = () => {
-		let bear1   = document.querySelector("#bear1");
+		let bear1 = document.querySelector("#bear1");
+		let bear2 = document.querySelector("#bear2");
+		let bear3 = document.querySelector("#bear3");
 		bear1.play();
-
 		let txtbox1 = document.querySelector("#bear1time");
+		let txtbox2 = document.querySelector("#bear2time");
+		let txtbox3 = document.querySelector("#bear3time");
+
 		bear1.addEventListener("timeupdate", () => {
 			let cur1 = bear1.currentTime;			//現在の再生時間を取得
+			let cur2 = bear2.currentTime;
+			let cur3 = bear3.currentTime;
+
 			txtbox1.setAttribute("value", cur1);	//テキストボックスの内容を変更
+			txtbox2.setAttribute("value", cur2);
+			txtbox3.setAttribute("value", cur3);
+
+			if(cur1>3 && cur2==0){
+				bear2.play();
+			}
+			if(cur1>6 && cur3==0){
+				bear3.play();
+			}
 		});
+
 	};
 
 	//------------------------------------
